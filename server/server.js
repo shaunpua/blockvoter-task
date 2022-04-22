@@ -14,8 +14,7 @@ const multer = require("multer");
 const bcrypt = require("bcrypt");
 const bodyParser = require('body-parser');
 
-// const userRoutes = require("./routes/Users");
-// const authRoutes = require("./routes/Auth");
+
 
 const User = require("./models/Users");
 
@@ -51,16 +50,7 @@ mongoose.connect(process.env.DATABASE_URL,
 app.use(express.json());
 app.use(cors());
 
-// app.post("/register", async (req, res) => {
-//     const user = req.body;
-//     const newUser = new User(user);
-//     await newUser.save();
-  
-//     res.json(user);
-//   });
 
-// app.use("api/users", userRoutes);
-// app.use("api/auth", authRoutes);
 
 
 app.post('/register', upload.single("photo"), async (req, res) => {
@@ -140,24 +130,6 @@ app.get("/profile", (req, res) => {
     });
   });
 
-// app.get('/profile', async (req, res) => {
-    
-//     try {
-
-//         const emailtoken = req.query.emailtoken;
-
-//         console.log('currentlyu logged email', emailtoken)
-
-//         const user = await User.find({email: emailtoken});
-
-//         res.json(user);
-       
-//       } catch (err) {
-// 		res.json(err)
-// 	}
-    
-    
-// })
 
 
 app.listen(port, () => {
